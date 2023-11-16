@@ -1,0 +1,27 @@
+[tool.poetry]
+name = "credit-card-testing"
+version = "0.1.0"
+description = "Black box tests for credit_card service"
+authors = []
+readme = "README.md"
+
+[tool.poetry.dependencies]
+python = "^3.9"
+requests = "^2.31.0"
+python-dotenv = "^1.0.0"
+psycopg2 = [
+    {platform = 'win32', version = "^2.9.7"}
+]
+psycopg2-binary = [
+    {platform = 'linux', version = "*"}
+]
+strenum = "^0.4.15"
+yarl = "1.8.2"
+dpath = "^2.1.6"
+pytest = "^7.4.0"
+faker = "^19.6.2"
+
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"

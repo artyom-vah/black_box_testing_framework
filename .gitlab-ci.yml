@@ -1,0 +1,26 @@
+stages:
+  - test
+
+Tests:
+  stage: test
+  image: python:3.9-slim
+  variables:
+    CREDIT_CARD_URL: "$CREDIT_CARD_URL"
+    DB_NAME: "$DB_NAME"
+    DB_USER: "$DB_USER"
+    DB_PASSWORD: "$DB_PASSWORD"
+    DB_HOST: "$DB_HOST"
+    DB_PORT: "$DB_PORT"
+    USER1_EMAIL: "$USER1_EMAIL"
+    USER1_PASSWORD: "$USER1_PASSWORD"
+  before_script:
+    - apt-get update && apt-get install -y curl
+    - curl -sSL https://install.python-poetry.org | python3 - --version 1.5.1
+    - export PATH="/root/.local/bin:$PATH"
+    - poetry config virtualenvs.create false
+    - poetry install
+  script:
+    - export PYTHONPATH="$PWD/src:$PYTHONPATH"
+    - pytest tests/
+  when: manual
+  allow_failure: false

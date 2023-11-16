@@ -1,0 +1,16 @@
+version: "3.3"
+services:
+  postgres_shift:
+    image: postgres:12.9
+    environment:
+      POSTGRES_DB: "credit_card"
+      POSTGRES_USER: "admin"
+      POSTGRES_PASSWORD: "password"
+      PGDATA: "/var/lib/postgresql/data/pgdata"
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+    ports:
+      - "5433:5432"
+
+volumes:
+  postgres_data: {}
